@@ -2,7 +2,7 @@
 // import data from 'data';
 // import transactions from 'transactions';
 // import friends from 'friends';
-// import Profile from 'components/Profile/Profile';
+import Notification from 'components/Notification/Notification';
 import Section from 'components/Section/Section';
 import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 import StatisticElement from 'components/StatisticElement/StatisticElement';
@@ -51,12 +51,17 @@ class App extends Component {
             onLeaveFeedback={this.onLeaveFeedback}
           />
         </Section>
+
         <Section title="Statistics">
-          <StatisticElement
-            {...this.state}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
-          />
+          {this.countTotalFeedback() !== 0 ? (
+            <StatisticElement
+              {...this.state}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
         </Section>
       </>
     );
