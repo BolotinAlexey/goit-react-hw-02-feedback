@@ -43,8 +43,6 @@ class App extends Component {
   onLeaveFeedback = el => this[`${el}Increment`];
 
   render() {
-    const { good, neutral, bad } = this.state;
-
     return (
       <>
         <FeedbackOptions
