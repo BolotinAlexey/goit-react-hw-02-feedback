@@ -20,6 +20,17 @@ class Feadback extends Component {
       bad: ++bad,
     }));
 
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    return bad + good + neutral;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const { good } = this.state;
+    return this.countTotalFeedback()
+      ? Math.round((good * 100) / this.countTotalFeedback())
+      : 0;
+  };
   render() {
     const { good, neutral, bad } = this.state;
 
@@ -50,6 +61,14 @@ class Feadback extends Component {
             </li>
             <li>
               <p>Bad: {bad}</p>
+            </li>
+            <li>
+              <p>Total: {this.countTotalFeedback()}</p>
+            </li>
+            <li>
+              <p>
+                Positive feedback: {this.countPositiveFeedbackPercentage()}%
+              </p>
             </li>
           </ul>
         </section>
