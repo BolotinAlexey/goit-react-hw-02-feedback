@@ -4,7 +4,7 @@
 // import friends from 'friends';
 // import Profile from 'components/Profile/Profile';
 // import Statistics from 'components/Statistics/Statistics';
-// import FriendList from 'components/FriendList/FriendList';
+import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 import StatisticElement from 'components/StatisticElement/StatisticElement';
 import React, { Component } from 'react';
 
@@ -15,15 +15,15 @@ class App extends Component {
     bad: 0,
   };
 
-  goodInc = () =>
+  goodIncrement = () =>
     this.setState(({ good }) => ({
       good: ++good,
     }));
-  neutralInc = () =>
+  neutralIncrement = () =>
     this.setState(({ neutral }) => ({
       neutral: ++neutral,
     }));
-  badInc = () =>
+  badIncrement = () =>
     this.setState(({ bad }) => ({
       bad: ++bad,
     }));
@@ -39,25 +39,19 @@ class App extends Component {
       ? Math.round((good * 100) / this.countTotalFeedback())
       : 0;
   };
+
+  onLeaveFeedback = el => this[`${el}Increment`];
+
   render() {
     const { good, neutral, bad } = this.state;
 
     return (
       <>
-        <section className="btns">
-          <h2>Please leave feadback</h2>
-          <ul className="buttons">
-            <li>
-              <button onClick={this.goodInc}>Good</button>
-            </li>
-            <li>
-              <button onClick={this.neutralInc}>Neutral</button>
-            </li>
-            <li>
-              <button onClick={this.badInc}>Bad</button>
-            </li>
-          </ul>
-        </section>
+        <FeedbackOptions
+          options={['good', 'neutral', 'bad']}
+          onLeaveFeedback={this.onLeaveFeedback}
+        />
+
         <StatisticElement
           {...this.state}
           total={this.countTotalFeedback()}
