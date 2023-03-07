@@ -1,12 +1,8 @@
-// import user from 'user';
-// import data from 'data';
-// import transactions from 'transactions';
-// import friends from 'friends';
+import React, { Component } from 'react';
 import Notification from 'components/Notification/Notification';
 import Section from 'components/Section/Section';
 import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 import StatisticElement from 'components/StatisticElement/StatisticElement';
-import React, { Component } from 'react';
 
 class App extends Component {
   state = {
@@ -19,10 +15,12 @@ class App extends Component {
     this.setState(({ good }) => ({
       good: ++good,
     }));
+
   neutralIncrement = () =>
     this.setState(({ neutral }) => ({
       neutral: ++neutral,
     }));
+
   badIncrement = () =>
     this.setState(({ bad }) => ({
       bad: ++bad,

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
     <section className="btns">
@@ -11,4 +13,10 @@ function FeedbackOptions({ options, onLeaveFeedback }) {
     </section>
   );
 }
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
+};
+
 export default FeedbackOptions;
