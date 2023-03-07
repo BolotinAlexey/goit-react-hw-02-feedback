@@ -3,7 +3,7 @@
 // import transactions from 'transactions';
 // import friends from 'friends';
 // import Profile from 'components/Profile/Profile';
-// import Statistics from 'components/Statistics/Statistics';
+import Section from 'components/Section/Section';
 import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 import StatisticElement from 'components/StatisticElement/StatisticElement';
 import React, { Component } from 'react';
@@ -45,16 +45,19 @@ class App extends Component {
   render() {
     return (
       <>
-        <FeedbackOptions
-          options={['good', 'neutral', 'bad']}
-          onLeaveFeedback={this.onLeaveFeedback}
-        />
-
-        <StatisticElement
-          {...this.state}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
-        />
+        <Section title="Please leave feadback">
+          <FeedbackOptions
+            options={['good', 'neutral', 'bad']}
+            onLeaveFeedback={this.onLeaveFeedback}
+          />
+        </Section>
+        <Section title="Statistics">
+          <StatisticElement
+            {...this.state}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
+          />
+        </Section>
       </>
     );
   }

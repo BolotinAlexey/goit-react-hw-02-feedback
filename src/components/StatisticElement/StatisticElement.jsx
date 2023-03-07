@@ -4,7 +4,6 @@
 function StatisticElement({ good, neutral, bad, total, positivePercentage }) {
   return (
     <section className="statistics">
-      <h2>Statisticks</h2>
       <ul>
         <li>
           <p>Good: {good}</p>
