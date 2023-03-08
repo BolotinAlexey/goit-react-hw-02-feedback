@@ -6,7 +6,7 @@ function FeedbackOptions({ options, onLeaveFeedback }) {
     <Ul>
       {options.map(el => (
         <li key={el}>
-          <Button onClick={onLeaveFeedback(el)}>{el}</Button>
+          <Button onClick={() => onLeaveFeedback(el)}>{el}</Button>
         </li>
       ))}
     </Ul>

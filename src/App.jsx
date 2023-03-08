@@ -11,21 +11,6 @@ class App extends Component {
     bad: 0,
   };
 
-  goodIncrement = () =>
-    this.setState(({ good }) => ({
-      good: ++good,
-    }));
-
-  neutralIncrement = () =>
-    this.setState(({ neutral }) => ({
-      neutral: ++neutral,
-    }));
-
-  badIncrement = () =>
-    this.setState(({ bad }) => ({
-      bad: ++bad,
-    }));
-
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
     return bad + good + neutral;
@@ -38,7 +23,7 @@ class App extends Component {
       : 0;
   };
 
-  onLeaveFeedback = el => this[`${el}Increment`];
+  onLeaveFeedback = el => this.setState(prev => ++prev[el]);
 
   render() {
     return (
